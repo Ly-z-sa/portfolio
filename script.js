@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinksArr = Array.from(document.querySelectorAll('.nav-link'));
 
     function moveMagicLineTo(link) {
-        if (!link || !nav || !magicLine) return; // Add null checks
+        if (!link || !nav || !magicLine) return; // Add null checks for robustness
         const navRect = nav.getBoundingClientRect();
         const textSpan = link.querySelector('.magic-text') || link;
         const textRect = textSpan.getBoundingClientRect();

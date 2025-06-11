@@ -43,20 +43,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // JavaScript for mobile menu toggle
+    // Toggle mobile menu and icons
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('icon-hamburger');
+    const closeIcon = document.getElementById('icon-close');
 
-    if (mobileMenuButton && mobileMenu) {
+    if (mobileMenuButton && mobileMenu && hamburgerIcon && closeIcon) {
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
         });
 
-        // Close mobile menu when a link is clicked
+        // Close menu when a link is clicked
         const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
         for (let link of mobileMenuLinks) {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
             });
         }
     }
@@ -115,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ScrollSpy for navigation
-    const sections = ['home', 'about', 'academics', 'projects', 'volunteering', 'contact']; // Ensure 'home' is included
+    const sections = ['home', 'about', 'academics', 'projects', 'volunteering', 'contact'];
     const navLinks = document.querySelectorAll('.nav-link');
 
     function onScroll() {
@@ -123,7 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let current = '';
         for (let id of sections) {
             const section = document.getElementById(id);
-            if (section && section.offsetTop <= scrollPos) {
+            // Check if section exists and is in view
+            if (section && section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
                 current = id;
             }
         }
@@ -145,4 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
         onScroll(); // Set active class and magic line on initial load
     });
     window.addEventListener('resize', updateMagicLine); // Only update magic line on resize
+
+    // Prevent right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
 });

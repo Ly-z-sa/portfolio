@@ -1,0 +1,162 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Simple animation for section headers */
+.section-header::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #3b82f6; /* blue-500 */
+    margin: 8px auto 0;
+    border-radius: 2px;
+    transition: width 0.3s ease-in-out;
+}
+
+.section-header:hover::after {
+    width: 80px;
+}
+
+@keyframes gradientBG {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.bg-animated-gradient {
+    background: linear-gradient(120deg, #f0f9ff 0%, #e0e7ff 50%, #bae6fd 100%);
+    background-size: 200% 200%;
+    animation: gradientBG 8s ease-in-out infinite;
+}
+
+.active-nav {
+    color: #2563eb !important; /* Tailwind blue-600 */
+    border-bottom: 2.5px solid #2563eb;
+    background: none;
+    border-radius: 0;
+    font-weight: 600;
+    padding-bottom: 0.25rem;
+    transition: all 0.2s;
+}
+
+/* Custom Scrollbar for Chrome, Edge, Safari */
+body, html, main, .container, section {
+    scrollbar-width: thin;
+    scrollbar-color: #033f83 #f1f5f9;
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar,
+main::-webkit-scrollbar,
+.container::-webkit-scrollbar,
+section::-webkit-scrollbar {
+    width: 10px;
+    background: #f1f5f9;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+main::-webkit-scrollbar-thumb,
+.container::-webkit-scrollbar-thumb,
+section::-webkit-scrollbar-thumb {
+    background: #93c5fd;
+    border-radius: 8px;
+    border: 2px solid #f1f5f9;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover,
+main::-webkit-scrollbar-thumb:hover,
+.container::-webkit-scrollbar-thumb:hover,
+section::-webkit-scrollbar-thumb:hover {
+    background: #60a5fa;
+}
+
+/* Custom Scrollbar for Firefox */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #93c5fd #f1f5f9;
+}
+
+.glass-nav {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 24px 0 rgba(30, 64, 175, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-nav::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(120deg,rgba(255,255,255,0.55) 0%,rgba(255,255,255,0.15) 100%);
+    opacity: 0.7;
+    pointer-events: none;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    z-index: 1;
+}
+
+.glass-nav > * {
+    position: relative;
+    z-index: 2;
+}
+
+.glass-card {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 24px 0 rgba(30, 64, 175, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 45%;
+    background: linear-gradient(120deg,rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.1) 100%);
+    opacity: 0.7;
+    pointer-events: none;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    z-index: 1;
+}
+
+.glass-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+button, .glass-btn, a.button, input[type="submit"] {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 24px 0 rgba(30, 64, 175, 0.08);
+    transition: all 0.3s;
+    color: #2563eb;
+}
+
+button:hover, .glass-btn:hover, a.button:hover, input[type="submit"]:hover {
+    background: rgba(255,255,255,0.45);
+    border-color: rgba(59,130,246,0.2);
+}
+
+#magic-line {
+    transition: left 0.35s cubic-bezier(.4,0,.2,1), width 0.35s cubic-bezier(.4,0,.2,1);
+    z-index: 10;
+    will-change: left, width;
+    height: 2.5px;
+}
+
+.magic-text {
+    display: inline-block;
+    position: relative;
+    padding: 0 2px;
+    margin: 0;
+}
